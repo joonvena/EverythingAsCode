@@ -1,0 +1,36 @@
+---
+- name: Create jenkins_home folder
+  file:
+    path: /opt/jenkins/jenkins_home
+    state: directory
+    owner: 1000
+    group: 1000
+
+- name: Download JCasC configuration
+  get_url:
+    url: https://raw.githubusercontent.com/joonvena/jenkins_config/master/jenkins_configuration.yaml
+    dest: /opt/jenkins/jenkins_home/jenkins.yaml
+
+- name: Update jenkins.yaml permissions
+  file:
+    path: /opt/jenkins/jenkins_home
+    owner: 1000
+    group: 1000
+
+- name: Create Jenkins image with plugins preinstalled
+  docker_image:
+    build:
+      path: "{{ role_path }}/files"
+    name: jenkins
+    tag: latest
+    source: build
+
+- name: Create Jenkins container
+  docker_container:
+    name: jenkins
+    image: jenkins:latest
+    state: started
+    ports:
+      - "8080:8080"
+    volumes:
+      - /opt/jenkins/jenkins_home:/var/jenkins_home

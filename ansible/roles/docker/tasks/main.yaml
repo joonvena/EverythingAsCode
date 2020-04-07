@@ -1,0 +1,24 @@
+---
+- name: Enable docker from extra libraries
+  command: sudo amazon-linux-extras enable docker
+
+- name: Install Docker
+  yum:
+    name: docker
+    state: latest
+
+- name: Add ec2-user to docker group
+  user:
+    name: ec2-user
+    append: yes
+    group: docker
+
+- name: Enable service Docker
+  service:
+    name: docker
+    enabled: yes
+
+- name: Start Docker
+  service:
+    name: docker
+    state: started

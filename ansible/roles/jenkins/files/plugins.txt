@@ -1,0 +1,16 @@
+credentials:latest
+git:latest
+ssh-slaves:latest
+warnings:latest
+matrix-auth:latest
+job-dsl:latest
+workflow-aggregator:latest
+timestamper:latest
+pretested-integration:latest
+envinject:latest
+text-finder:latest
+email-ext:latest
+parameterized-trigger:latest
+copyartifact:latest
+htmlpublisher:latest
+configuration-as-code:latest
