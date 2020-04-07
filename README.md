@@ -23,3 +23,5 @@ There is also another repository for jenkins_config [here](https://github.com/jo
 - JENKINS_URL (EC2 instance public_ip)
 - TOKEN (Create his token <JENKINS_URL>/user/<USERNAME>/configure)
 - USER (Your Jenkins username)
+
+![Image description](config.png)
